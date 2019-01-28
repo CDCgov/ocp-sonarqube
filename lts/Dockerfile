@@ -7,6 +7,7 @@ LABEL io.k8s.description="SonarQube image that will run in OpenShift with restri
     io.openshift.tags="sonarqube,sonarqube-lts" \
     io.openshift.expose-services="9000:http"
 
+USER 0
 # Replace original run.sh with our custom one
 COPY run.sh $SONARQUBE_HOME/bin/
 RUN chmod +x $SONARQUBE_HOME/bin/run.sh && \
