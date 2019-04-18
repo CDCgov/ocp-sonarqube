@@ -1,4 +1,4 @@
-FROM sonarqube:6.7.5
+FROM sonarqube:6.7.6-community
 
 MAINTAINER Tim Taylor <mpx1@cdc.gov, ttaylor@mitre.org>
 
@@ -11,7 +11,7 @@ USER 0
 # Install package update
 RUN /bin/grep security /etc/apt/sources.list | tee /etc/apt/security.sources.list && \
     /usr/bin/apt-get update && \
-    /usr/bin/apt-get upgrade -o Dir::Etc::SourceList=/etc/apt/security.sources.list
+    /usr/bin/apt-get -y upgrade -o Dir::Etc::SourceList=/etc/apt/security.sources.list
 
 # Replace original run.sh with our custom one
 COPY run.sh $SONARQUBE_HOME/bin/
