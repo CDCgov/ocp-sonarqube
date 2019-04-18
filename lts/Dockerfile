@@ -9,9 +9,9 @@ LABEL io.k8s.description="SonarQube image that will run in OpenShift with restri
 
 USER 0
 # Install package update
-RUN grep security /etc/apt/sources.list | tee /etc/apt/security.sources.list && \
-    apt-get update && \
-    apt-get upgrade -o Dir::Etc::SourceList=/etc/apt/security.sources.list
+RUN /bin/grep security /etc/apt/sources.list | tee /etc/apt/security.sources.list && \
+    /usr/bin/apt-get update && \
+    /usr/bin/apt-get upgrade -o Dir::Etc::SourceList=/etc/apt/security.sources.list
 
 # Replace original run.sh with our custom one
 COPY run.sh $SONARQUBE_HOME/bin/
